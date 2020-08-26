@@ -39,7 +39,8 @@
 #include <ESPAsyncWiFiManager.h>  // https://github.com/alanswx/ESPAsyncWiFiManager
 #include <SPIFFSEditor.h>
 
-#include <NeoPixelBus.h>   // https://github.com/Makuna/NeoPixelBus
+//#include <NeoPixelBus.h>   // https://github.com/Makuna/NeoPixelBus
+#include <NeoPixelBrightnessBus.h>   // https://github.com/Makuna/NeoPixelBus
 #include <NTPClient.h>   // https://github.com/arduino-libraries/NTPClient
 #include <DNSServer.h>
 
@@ -53,8 +54,8 @@
 
 #define DBG_OUTPUT_PORT Serial
 
-NeoPixelBus<MyPixelColorFeature, Neo800KbpsMethod> *strip = new NeoPixelBus<MyPixelColorFeature, Neo800KbpsMethod> (PixelCount, 2);
-
+//NeoPixelBus<MyPixelColorFeature, Neo800KbpsMethod> *strip = new NeoPixelBus<MyPixelColorFeature, Neo800KbpsMethod> (PixelCount, 2);
+NeoPixelBrightnessBus<MyPixelColorFeature, Neo800KbpsMethod> *strip = new NeoPixelBrightnessBus<MyPixelColorFeature, Neo800KbpsMethod> (PixelCount, 2);
 
 
 
@@ -109,7 +110,8 @@ class DisplayHandler: public AsyncWebHandler {
 
 
 
-      timeClient = new NTPClient(ntpUDP, -28800 + (60 * 60/*DST*/));
+//      timeClient = new NTPClient(ntpUDP, -28800 + (60 * 60/*DST*/));
+      timeClient = new NTPClient(ntpUDP);
       pixelText = new DisplayPixelsText();
       pixelGIF = new DisplayPixelsAnimatedGIF();
       pixelLive = new DisplayPixelsLive();
@@ -335,7 +337,7 @@ for(int i=0;i<args;i++){
         // let's pull the hex values out
         for (int y = 0; y < 8; y++)
         {
-          for (int x = 0; x < 8; x++)
+          for (int x = 0; x < 32; x++)
           {
             char hr[4];
             hr[0] = pixels[pos++];
