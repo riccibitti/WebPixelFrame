@@ -335,9 +335,11 @@ for(int i=0;i<args;i++){
         //pixels.toUpperCase();
         int pos = 0;
         // let's pull the hex values out
-        for (int y = 0; y < 8; y++)
+// ARB        for (int y = 0; y < 8; y++)
+        for (int y = 0; y < 16; y++)
         {
-          for (int x = 0; x < 32; x++)
+// ARB          for (int x = 0; x < 32; x++)
+          for (int x = 0; x < PanelWidth; x++)
           {
             char hr[4];
             hr[0] = pixels[pos++];
