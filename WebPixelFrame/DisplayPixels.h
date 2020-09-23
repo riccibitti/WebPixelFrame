@@ -32,7 +32,7 @@ static NeoMosaic <MyPanelLayout> mosaic(
 class DisplayPixels
 {
   public:    
-    DisplayPixels() { setBrightness( 30 ); }
+    DisplayPixels() { setBrightness( 50 ); }
     virtual void UpdateAnimation(void) = 0;
     virtual void stop() {}
     void setBrightness( uint8_t brightness ) { strip->SetBrightness( brightness ); /* 0...255*/ }
