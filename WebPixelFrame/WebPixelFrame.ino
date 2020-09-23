@@ -111,7 +111,7 @@ class DisplayHandler: public AsyncWebHandler {
 
 
 //      timeClient = new NTPClient(ntpUDP, -28800 + (60 * 60/*DST*/));
-      timeClient = new NTPClient( ntpUDP, 3600 );
+      timeClient = new NTPClient( ntpUDP, 3600+3600 );
       pixelText = new DisplayPixelsText();
       pixelGIF = new DisplayPixelsAnimatedGIF();
       pixelLive = new DisplayPixelsLive();
